@@ -14,5 +14,5 @@ class RegistroCliente(Base):
     correo = Column(String(100), nullable=False, unique=True)
     celular = Column(String(20), nullable=False)
 
-engine = create_engine('postgresql://postgres:8881243@127.0.0.1:5432/crudregistro')
+engine = create_engine('sqlite:///crudregistro.db')
 Base.metadata.create_all(engine)
