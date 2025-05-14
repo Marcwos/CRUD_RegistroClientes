@@ -31,17 +31,39 @@
         </form>
 
         <h3>Clientes registrados:</h3>
-        {% for cliente in clientes %}
-            <div class="cliente-card">
-                <strong>{{ cliente.nombre }}</strong>
-                <div class="botones">
-                    <button>Botón 1</button>
-                    <button>Botón 2</button>
-                </div>
-            </div>
-        {% else %}
-            <p>No hay clientes registrados aún.</p>
-        {% endfor %}
-    </div>
+            <table border="1" class="tabla-clientes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Correo</th>
+                        <th>Celular</th>
+                        <th>....</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.apellido }}</td>
+                        <td>{{ cliente.fecha_nacimiento }}</td>
+                        <td>{{ cliente.correo }}</td>
+                        <td>{{ cliente.celular }}</td>
+                        <td>
+                            <button>Editar</button>
+                            <form method="POST" action="/eliminar" style="display:inline;">
+                                <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                                <button type="submit" onclick="return confirm('Seguro eliminar cliente?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No hay clientes registrados aún.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 </body>
 </html>
