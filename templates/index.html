@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hoteleria Francisco</title>
+    <link rel="stylesheet" href="static\style.css">
 </head>
 <body>
     <div class="contenedor">
         <h2 class="subtitulo">Hoteleria Francisco</h2>
         <p class="texto">Ingreso de cliente</p>
 
-        <form method="POST" action="/guardar">
+        <form method="POST" action="/guardar" class="formulario">
             <label for="nombre">Nombres</label>
-            <input type="text" name="nombre" id="nombre"><br><br>
+            <input type="text" name="nombre" id="nombre"><br>
 
             <label for="apellido">Apellidos</label>
-            <input type="text" name="apellido" id="apellido"><br><br>
+            <input type="text" name="apellido" id="apellido"><br>
 
             <label for="fecha_nacimiento">Fecha de nacimiento</label>
-            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"><br><br>
+            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"><br>
 
             <label for="correo">Correo</label>
-            <input type="email" name="correo" id="correo"><br><br>
+            <input type="email" name="correo" id="correo"><br>
 
             <label for="celular">Celular</label>
-            <input type="text" name="celular" id="celular"><br><br>
+            <input type="text" name="celular" id="celular"><br>
 
-            <button type="submit">Guardar</button><br><br>
+            <button type="submit">Guardar</button>
         </form>
+
+        <h3>Clientes registrados:</h3>
+        {% for cliente in clientes %}
+            <div class="cliente-card">
+                <strong>{{ cliente.nombre }}</strong>
+                <div class="botones">
+                    <button>Botón 1</button>
+                    <button>Botón 2</button>
+                </div>
+            </div>
+        {% else %}
+            <p>No hay clientes registrados aún.</p>
+        {% endfor %}
     </div>
 </body>
 </html>

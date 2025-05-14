@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect
-from utils.helpers import guardar_cliente
+from utils.helpers import guardar_cliente, obtener_clientes  # <- importar función nueva
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    clientes = obtener_clientes()  # <- Obtener lista de clientes
+    return render_template('index.html', clientes=clientes)
 
 @app.route('/guardar', methods=['POST'])
 def guardar():
@@ -20,3 +21,4 @@ def guardar():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
