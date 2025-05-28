@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from utils.helpers import guardar_cliente, obtener_clientes, eliminar_cliente
+import os
 
 app = Flask(__name__)
 
@@ -27,5 +28,6 @@ def eliminar():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
 
